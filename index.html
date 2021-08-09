@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-    html {
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      html {
         height: 100%;
-    }
+      }
 
-	body {
-	    height: 100%;
-		margin: 0;
+      body {
+        height: 100%;
+        margin: 0;
         font-family: sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-	}
+      }
 
-    #gameCanvas {
+      #gameCanvas {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+      }
 
-    .row {
+      .row {
         display: flex;
         flex-direction: row;
-    }
+      }
 
-    .row:first-child {
+      .row:first-child {
         border-top: 1px solid #000;
-    }
+      }
 
-    .row:last-child {
+      .row:last-child {
         border-bottom: 1px solid #000;
-    }
+      }
 
-    .column {
+      .column {
         width: 50px;
         height: 50px;
         border: 1px solid #000;
@@ -45,24 +45,25 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
+      }
 
-    .column:first-child {
+      .column:first-child {
         border-left: 2px solid #000;
-    }
+      }
 
-    .column:last-child {
+      .column:last-child {
         border-right: 2px solid #000;
-    }
+      }
 
-    .column:hover {
+      .column:hover {
         background: #eeeeee;
-    }
-	</style>
-</head>
-<body>
+      }
+    </style>
+  </head>
+  <body>
     <div id="gameCanvas"></div>
     <button id="resetBtn">Reset</button>
+    <script src="src/tic-tac-toe.js"></script>
     <script src="./app.bundle.js"></script>
-</body>
+  </body>
 </html>

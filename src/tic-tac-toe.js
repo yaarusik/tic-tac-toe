@@ -1,35 +1,89 @@
 class TicTacToe {
-    constructor() {
+  constructor() {
+    this.matrix = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ];
 
+    this.winComb = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    this.player = "x";
+  }
+
+  getCurrentPlayerSymbol() {
+    return this.player;
+  }
+
+  nextTurn(rowIndex, columnIndex) {
+    if (this.matrix[rowIndex][columnIndex] == null) {
+      this.matrix[rowIndex][columnIndex] = this.player;
+      if (this.player === "x") {
+        this.player = "o";
+      } else {
+        this.player = "x";
+      }
     }
+  }
 
-    getCurrentPlayerSymbol() {
+  isFinished() {
+    return !!this.getWinner() || this.noMoreTurns();
+  }
 
+  getWinner() {
+    //for row
+    for (let i = 0; i < this.matrix.length; i++) {
+      let row = this.matrix[i].join("");
+      if (row === "xxx") {
+        return "x";
+      } else if (row === "ooo") {
+        return "o";
+      }
     }
-
-    nextTurn(rowIndex, columnIndex) {
-
+    //for column
+    for (let i = 0; i < this.matrix.length; i++) {
+      if (
+        this.matrix[0][i] == this.matrix[1][i] &&
+        this.matrix[0][i] == this.matrix[2][i]
+      ) {
+        return this.matrix[0][i];
+      }
     }
-
-    isFinished() {
-
+    //for diagonals
+    if (
+      this.matrix[0][0] == this.matrix[1][1] &&
+      this.matrix[0][0] == this.matrix[2][2]
+    ) {
+      return this.matrix[0][0];
+    } else if (
+      this.matrix[2][0] == this.matrix[1][1] &&
+      this.matrix[2][0] == this.matrix[0][2]
+    ) {
+      return this.matrix[2][0];
     }
+    return null;
+  }
 
-    getWinner() {
+  noMoreTurns() {
+    return this.matrix.every((item) => item.every((a) => a !== null));
+  }
 
-    }
+  isDraw() {
+    return this.noMoreTurns() && !this.getWinner();
+  }
 
-    noMoreTurns() {
-
-    }
-
-    isDraw() {
-
-    }
-
-    getFieldValue(rowIndex, colIndex) {
-
-    }
+  getFieldValue(rowIndex, colIndex) {
+    return this.matrix[rowIndex][colIndex] || null;
+  }
 }
 
 module.exports = TicTacToe;
